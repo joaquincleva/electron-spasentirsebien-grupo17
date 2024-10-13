@@ -1,33 +1,22 @@
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import { useAuthContext } from "@/Context/AuthContext";
-import { useServiceContext } from "@/Context/ServiceContext";
-import { useToast } from "@/hooks/use-toast";
-import { News } from "@/interfaces/News.interface";
-import { Service } from "@/interfaces/Service.interface";
-import { ServiceCategories } from "@/interfaces/ServiceCategories.interface";
-import { User } from "@/interfaces/User.interface";
-import { serviceGetAllNews } from "@/services/news.service";
-import { serviceGetAllServices } from "@/services/services.service";
-import { serviceGetAllCategories } from "@/services/servicesCategories.service";
-import {
-  serviceGetAllUsers,
-  serviceGetUserById,
-} from "@/services/users.service";
-import GoogleMap from "@/shared/GoogleMap/GoogleMap";
-import LoadingSpinner from "@/shared/LoadingSpinner/LoadingSpinner";
-import RotatingCard from "@/shared/RotatingCard/RotatingCard";
-import { FaceSmileIcon } from "@heroicons/react/24/outline";
-import { ChevronRightIcon, NewspaperIcon } from "@heroicons/react/24/solid";
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+
+//import GoogleMap from "@/shared/GoogleMap/GoogleMap";
+
+import { Smile, ChevronRight, Newspaper, ChevronRightIcon } from "lucide-react";
+
 import { Key, useEffect, useState } from "react";
+import { useServiceContext } from "../../Context/ServiceContext";
+import { useAuthContext } from "../../Context/AuthContext";
+import { useToast } from "../../shared/hooks/use-toast";
+import { Service } from "../../interfaces/Service.interface";
+import { ServiceCategories } from "../../interfaces/ServiceCategories.interface";
+import { Link, useNavigate } from "react-router-dom";
+import { News } from "../../interfaces/News.interface";
+import { serviceGetAllServices } from "../../services/services.service";
+import { serviceGetAllCategories } from "../../services/servicesCategories.service";
+import { serviceGetAllNews } from "../../services/news.service";
+import LoadingSpinner from "../../shared/LoadingSpinner";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../../shared/shadcn/ui/carousel";
+import RotatingCard from "../../shared/RotatingCard";
 
 export default function Home() {
   const { setServiceContext } = useServiceContext();
@@ -39,7 +28,7 @@ export default function Home() {
     ServiceCategories[]
   >([]);
   const [news, setNews] = useState<News[]>([]);
-  const router = useRouter();
+  const navigate = useNavigate();
 
   
 
@@ -111,7 +100,7 @@ export default function Home() {
                 Adaptamos las propuestas con el objetivo de que logre desconectarse de la rutina y disfrute un momento de bienestar, en total armonía con la naturaleza.
                 </p>
                 <Link
-                  href="/auth/register"
+                  to="/auth/register"
                   className="cursor-pointer flex text-[15px] border-2 border-white font-bold text-white bg-[#262626] py-[10px] px-[20px]"
                 >
                   SignUp <ChevronRightIcon className="w-6 h-6" />
@@ -130,7 +119,7 @@ export default function Home() {
                   }}
                   onClick={() => {
                     setServiceContext(item);
-                    router.push(`/servicios/${item.id}`);
+                    navigate(`/servicios/${item.id}`);
                   }}
                 >
                   <div className="w-full m-0 p-0 h-full hover:bg-black hover:bg-opacity-30 flex items-center justify-center">
@@ -153,7 +142,7 @@ export default function Home() {
 
           <div className="w-full flex my-10 flex-col items-center justify-center">
             <h6 className="flex text-3xl gap-2 text-[#ff4f9d] font-bold">
-              <NewspaperIcon className="h-6 w-6 text-yellow-400" />
+              <Newspaper className="h-6 w-6 text-yellow-400" />
               Últimas noticias
             </h6>
             <div className="flex gap-2 mt-2 mb-5">
@@ -170,7 +159,7 @@ export default function Home() {
 
           <div className="w-full flex my-10 flex-col items-center justify-center">
             <h6 className="flex text-3xl text-[#ff4f9d] gap-2 font-semibold">
-              <FaceSmileIcon className="h-6 w-6 text-yellow-400" />
+              <Smile className="h-6 w-6 text-yellow-400" />
               Nuestros Servicios
             </h6>
             <div className="flex gap-2 mt-2 mb-5">
@@ -207,7 +196,7 @@ export default function Home() {
               )}
           </div>
           <div className="w-full flex items-center justify-center">
-            <GoogleMap />
+            {/* <GoogleMap /> */}
           </div>
         </div>
       )}
