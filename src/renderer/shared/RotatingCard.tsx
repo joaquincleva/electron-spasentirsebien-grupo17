@@ -1,14 +1,8 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { News } from "@/interfaces/News.interface";
-import { Service } from "@/interfaces/Service.interface";
-import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { News } from "../interfaces/News.interface";
+import { Service } from "../interfaces/Service.interface";
+import { Navigate, useNavigate } from "react-router-dom";
+import { Card, CardDescription, CardHeader, CardTitle } from "./shadcn/ui/card";
 
 interface RotatingCardProps {
   item: News | Service;
@@ -17,7 +11,7 @@ interface RotatingCardProps {
 
 const RotatingCard: React.FC<RotatingCardProps> = ({ item, content }) => {
   const [rotation, setRotation] = useState({ rotateX: 0, rotateY: 0 });
-  const router = useRouter();
+  const navigate = useNavigate();
   const handleMouseMove = (e: any) => {
     const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
@@ -40,7 +34,7 @@ const RotatingCard: React.FC<RotatingCardProps> = ({ item, content }) => {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onClick={() => {
-        router.push(
+        navigate(
           "publish_date" in item
             ? `/noticias/${item.id}`
             : `/servicios/${item.id}`
