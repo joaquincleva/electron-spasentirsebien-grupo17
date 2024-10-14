@@ -13,7 +13,7 @@ const routes: Route[] = [
   { title: "Imágenes", route: "/imagenes" },
   { title: "Consultas", route: "/consultas" },
   { title: "Sobre nosotros", route: "/about" },
-  { title: "Mi perfil", route: "/perfil" },
+  { title: "Mi perfil", route: "/perfiles/perfil" },
   { title: "Usuarios", route: "/usuarios" },
 ];
 
