@@ -13,6 +13,11 @@ import NotFound from './shared/NotFound';
 import PrivateRoute from './shared/PrivateRoute';
 import Layout from './shared/Layout';
 import Home from './app/pages/Home';
+// >>> Tyncho andubo por aqui...
+import About from './app/pages/about';
+import Imagenes from './app/pages/imagenes';
+//import Usuarios from './app/pages/usuarios';
+// >>> ...tratando que le reconozcan el url.(borrar esto)
 import SecondaryPage from './app/pages/SecondaryPage';
 import { ServiceProvider } from './Context/ServiceContext';
 
@@ -31,6 +36,12 @@ export default function App() {
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="*" element={<NotFound />} />
+            {/* Sobre nosotros >>> NavBar */}
+            <Route path="/about" element={<About/>} />
+            {/* Imagenes >>> NavBar */}
+            <Route path="/imagenes" element={<Imagenes/>} />
+            {/* Usuarios >>> NavBar */}
+            {/* <Route path="/usuarios" element={<Usuarios/>} /> */}
           </Routes>
         </Router>
       </ServiceProvider>
