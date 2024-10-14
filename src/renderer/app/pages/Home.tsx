@@ -70,9 +70,10 @@ export default function Home() {
 
   return (
     <div
-      className={`w-full flex justify-center flex-col items-center max-w-full bg-[url('/background-image.png')] bg-bottom bg-no-repeat mb-10 ${
-        loading ? "bg-cover" : "bg-contain"
-      }`}
+      className={`w-full flex justify-center flex-col items-center max-w-full mb-10 bg-contain`}
+      style={{
+        background: `url("/background-image.png") no-repeat bottom`,
+      }}
     >
       {loading ? (
         <LoadingSpinner />
