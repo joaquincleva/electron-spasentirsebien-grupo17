@@ -17,6 +17,9 @@ import About from './app/pages/about';
 import Imagenes from './app/pages/imagenes';
 import Usuarios from './app/pages/usuarios';
 import Perfil from './app/pages/perfiles/perfil';
+import Consulta from './app/pages/consultas/consulta'
+import Turno from './app/pages/turnos/turnos';
+import Servicios from './app/pages/servicios/servicios';
 import SecondaryPage from './app/pages/SecondaryPage';
 import { ServiceProvider } from './Context/ServiceContext';
 
@@ -30,15 +33,18 @@ export default function App() {
             <Route path="private/*" element={<PrivateRoute />}>
               <Route element={<Layout />}>
                 <Route index element={<Home />} />
+                <Route path="about" element={<About/>} />
+                <Route path="imagenes" element={<Imagenes />} />
+                <Route path="usuarios" element={<Usuarios />} />
+                <Route path="perfil" element={<Perfil />} />                    {/* no-cargar-queda-en-spinner */}
+                <Route path="servicios" element={<Servicios />} />              {/* no-carga-detalles */}
+                <Route path="consulta" element={<Consulta />} />                {/* no-carga */}
+                {/* <Route path="turnos" element={<Turno />} />                  falta-solucionar-calendario */}
                 <Route path="secondary" element={<SecondaryPage />} />
               </Route>
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="*" element={<NotFound />} />
-            <Route path="/about" element={<About/>} />
-            <Route path="/imagenes" element={<Imagenes/>} />
-            <Route path="/usuarios" element={<Usuarios/>} />
-            <Route path="/pages/perfiles/perfil" element={<Perfil/>} />
           </Routes>
         </Router>
       </ServiceProvider>

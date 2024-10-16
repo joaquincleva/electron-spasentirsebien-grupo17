@@ -8,13 +8,13 @@ import { useAuthContext } from "../Context/AuthContext";
 import ProfileMenu from "./UserProfile";
 
 const routes: Route[] = [
-  { title: "Servicios", route: "/servicios" },
-  { title: "Noticias", route: "/noticias" },
-  { title: "Imágenes", route: "/imagenes" },
-  { title: "Consultas", route: "/consultas" },
-  { title: "Sobre nosotros", route: "/about" },
-  { title: "Mi perfil", route: "/perfiles/perfil" },
-  { title: "Usuarios", route: "/usuarios" },
+  { title: "Servicios", route: "/private/servicios" },
+  { title: "Noticias", route: "/private/noticias" },
+  { title: "Imágenes", route: "/private/imagenes" },
+  { title: "Consultas", route: "/private/consultas" },
+  { title: "Sobre nosotros", route: "/private/about" },
+  { title: "Mi perfil", route: "/private/perfil" },
+  { title: "Usuarios", route: "/private/usuarios" },
 ];
 
 const Navbar = () => {
